@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ProgressBar from './ProgressBar'; // Import the ProgressBar component
 import ExcelJS from 'exceljs';
 import { saveAs } from 'file-saver';
 import './App.css';
@@ -67,12 +68,13 @@ const App = () => {
 
   return (
     <div className="app-container">
+      <ProgressBar totalQuestions={quizData.length} currentQuestion={currentQuestion + 1} />
       {showResult ? (
         <div className="result-container">
           <h2>Quiz Result</h2>
           <p>Correct Answers: {score.correct}</p>
           <p>Wrong Answers: {score.wrong}</p>
-          <button className="btn" onClick={handleTryAgain} style={{marginRight:"6px"}}>
+          <button className="btn" onClick={handleTryAgain} style={{ marginRight: "6px" }}>
             Try Again
           </button>
           <button className="btn" onClick={downloadResults} style={{ marginLeft: "6px" }}>
